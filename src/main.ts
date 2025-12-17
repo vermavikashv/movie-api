@@ -22,8 +22,8 @@ async function bootstrap() {
   });
 
   app.enableCors({
-    origin: 'http://localhost:3000', // Next.js dev server
-    credentials: true, // if using cookies or sessions
+    origin: 'http://localhost:3000',
+    credentials: true,
   });
 
   await app.listen(3001);

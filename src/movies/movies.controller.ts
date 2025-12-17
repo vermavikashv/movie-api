@@ -23,7 +23,6 @@ import { ApiTags, ApiConsumes, ApiBody } from '@nestjs/swagger';
 export class MoviesController {
   constructor(private readonly moviesService: MoviesService) {}
 
-  // Get all movies
   @Get()
   findAll(
     @Query('page') page: string = '1',
@@ -35,7 +34,6 @@ export class MoviesController {
     return this.moviesService.findAllWithPagination(pageNumber, limitNumber);
   }
 
-  // Get movie by ID
   @Get(':id')
   findOne(@Param('id') id: number) {
     const movie = this.moviesService.findOne(+id);
@@ -43,7 +41,6 @@ export class MoviesController {
     return movie;
   }
 
-  // Create movie with image
   @Post()
   @UseInterceptors(
     FileInterceptor('image', {
@@ -79,7 +76,6 @@ export class MoviesController {
     return this.moviesService.create(movieData as any);
   }
 
-  // Update movie (optional new image)
   @Put(':id')
   @UseInterceptors(
     FileInterceptor('image', {
